@@ -2825,11 +2825,14 @@ body {
 
 /* =========================================================
    MENTOR SECTION — PREMIUM REDESIGN
+   FULL IMAGE / NEVER CROPPED
    ========================================================= */
 
 .mentor-section {
-  padding: 40px 0;
   position: relative;
+  padding: 40px 0;
+  overflow: hidden;
+  box-sizing: border-box;
 
   background:
     radial-gradient(circle at 15% 45%,
@@ -2841,10 +2844,6 @@ body {
     rgba(4, 13, 11, 0.72);
 
   border-top: 1px solid rgba(77, 243, 156, 0.08);
-
-  overflow: hidden;
-
-  box-sizing: border-box;
 }
 
 
@@ -2854,41 +2853,27 @@ body {
 
 .mentor-section::before {
   content: "";
-
   position: absolute;
-
   width: 420px;
   height: 420px;
-
   left: -220px;
   top: 20%;
-
   border-radius: 50%;
-
   background: rgba(77, 243, 156, 0.07);
-
   filter: blur(100px);
-
   pointer-events: none;
 }
 
 .mentor-section::after {
   content: "";
-
   position: absolute;
-
   width: 360px;
   height: 360px;
-
   right: -180px;
   bottom: 0;
-
   border-radius: 50%;
-
   background: rgba(43, 212, 128, 0.055);
-
   filter: blur(100px);
-
   pointer-events: none;
 }
 
@@ -2903,11 +2888,8 @@ body {
 
 .mentor-desktop {
   position: relative;
-
   z-index: 2;
-
   display: flex;
-
   flex-direction: column;
 }
 
@@ -2934,22 +2916,27 @@ body {
 
 .mentor-image-col {
   position: relative;
-
   min-width: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
 /* =========================================================
-   IMAGE CARD
+   DESKTOP IMAGE CARD
    ========================================================= */
 
 .mentor-card-image {
   position: relative;
 
   width: 100%;
-  height: 100%;
-
   min-height: 540px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   overflow: hidden;
 
@@ -2971,34 +2958,41 @@ body {
 
 
 /* =========================================================
-   IMAGE
+   DESKTOP IMAGE
+   IMPORTANT: CONTAIN = NEVER CROPPED
    ========================================================= */
 
 .mentor-img {
-  position: absolute;
-
-  inset: 0;
+  position: relative;
 
   width: 100%;
-  height: 100%;
+  height: auto;
 
-  object-fit: cover;
+  min-height: 540px;
 
-  object-position: center top;
+  display: block;
+
+  object-fit: contain !important;
+  object-position: center center !important;
+
+  transform: none !important;
 
   z-index: 1;
 
-  transition:
-    transform 0.7s ease,
-    filter 0.5s ease;
+  transition: filter 0.4s ease;
+
+  background: #061210;
 }
 
 
-/* subtle image zoom */
+/* =========================================================
+   NO DESKTOP IMAGE ZOOM
+   ========================================================= */
 
 .mentor-card-image:hover .mentor-img {
-  transform: scale(1.025);
-
+  transform: none !important;
+  object-fit: contain !important;
+  object-position: center center !important;
   filter: saturate(1.05);
 }
 
@@ -3011,23 +3005,23 @@ body {
   content: "";
 
   position: absolute;
-
   inset: 0;
 
   z-index: 2;
-
   pointer-events: none;
 
   background:
     linear-gradient(180deg,
-      rgba(3, 13, 10, 0.04) 0%,
-      rgba(3, 13, 10, 0.02) 40%,
-      rgba(3, 13, 10, 0.42) 68%,
-      rgba(3, 13, 10, 0.97) 100%);
+      rgba(3, 13, 10, 0.02) 0%,
+      rgba(3, 13, 10, 0.01) 40%,
+      rgba(3, 13, 10, 0.32) 70%,
+      rgba(3, 13, 10, 0.94) 100%);
 }
 
 
-/* green edge lighting */
+/* =========================================================
+   GREEN EDGE LIGHTING
+   ========================================================= */
 
 .mentor-card-image::after {
   content: "";
@@ -3047,7 +3041,6 @@ body {
   filter: blur(70px);
 
   z-index: 2;
-
   pointer-events: none;
 }
 
@@ -3121,12 +3114,13 @@ body {
   width: 7px;
   height: 7px;
 
+  flex: 0 0 7px;
+
   border-radius: 50%;
 
   background: #4df39c;
 
-  box-shadow:
-    0 0 8px #4df39c;
+  box-shadow: 0 0 8px #4df39c;
 }
 
 
@@ -3148,7 +3142,7 @@ body {
 
 
 /* =========================================================
-   BIO CARD
+   BIO
    ========================================================= */
 
 .mentor-bio-box {
@@ -3172,9 +3166,6 @@ body {
   overflow: hidden;
 }
 
-
-/* small decorative glow */
-
 .mentor-bio-box::after {
   content: "";
 
@@ -3195,14 +3186,8 @@ body {
   pointer-events: none;
 }
 
-
-/* =========================================================
-   BIO TEXT
-   ========================================================= */
-
 .mentor-bio {
   position: relative;
-
   z-index: 2;
 
   margin: 0;
@@ -3218,21 +3203,17 @@ body {
 
 
 /* =========================================================
-   STATS GRID
+   STATS
    ========================================================= */
 
 .mentor-stats-grid {
   display: grid;
 
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
 
   gap: 1rem;
 }
-
-
-/* =========================================================
-   STAT CARD
-   ========================================================= */
 
 .m-stat-card {
   position: relative;
@@ -3268,9 +3249,6 @@ body {
     background 0.3s ease;
 }
 
-
-/* hover glow */
-
 .m-stat-card::before {
   content: "";
 
@@ -3293,7 +3271,6 @@ body {
   transition: opacity 0.3s ease;
 }
 
-
 .m-stat-card:hover {
   transform: translateY(-3px);
 
@@ -3312,11 +3289,6 @@ body {
 .m-stat-card:hover::before {
   opacity: 1;
 }
-
-
-/* =========================================================
-   STAT ICON
-   ========================================================= */
 
 .m-stat-icon {
   position: relative;
@@ -3345,11 +3317,6 @@ body {
   box-shadow:
     inset 0 0 12px rgba(77, 243, 156, 0.04);
 }
-
-
-/* =========================================================
-   STAT DETAILS
-   ========================================================= */
 
 .m-stat-details {
   min-width: 0;
@@ -3397,6 +3364,13 @@ body {
     min-height: 500px;
   }
 
+  .mentor-img {
+    min-height: 500px;
+
+    object-fit: contain !important;
+    object-position: center center !important;
+  }
+
   .mentor-bio-box {
     padding: 1.6rem 1.7rem;
   }
@@ -3408,7 +3382,6 @@ body {
   .m-stat-icon {
     width: 44px;
     height: 44px;
-
     flex-basis: 44px;
   }
 
@@ -3424,24 +3397,13 @@ body {
 
 @media (max-width: 900px) {
 
-  /* FIXED:
-     Keep Mentor section at exactly 40px
-     top and 40px bottom on mobile.
-  */
-
   .mentor-section {
     padding: 40px 0;
   }
 
-
-  /* Hide desktop */
-
   .mentor-desktop {
     display: none;
   }
-
-
-  /* Show mobile */
 
   .mentor-mobile {
     position: relative;
@@ -3461,6 +3423,8 @@ body {
   .mentor-card-m {
     position: relative;
 
+    width: 100%;
+
     overflow: hidden;
 
     border-radius: 22px;
@@ -3478,7 +3442,11 @@ body {
 
 
   /* =======================================================
-     MOBILE IMAGE
+     MOBILE IMAGE WRAPPER
+
+     IMPORTANT:
+     No forced aspect-ratio.
+     Border follows the real image height.
      ======================================================= */
 
   .mentor-img-wrapper-m {
@@ -3486,9 +3454,13 @@ body {
 
     width: 100%;
 
-    aspect-ratio: 4 / 4.6;
+    height: auto;
+
+    aspect-ratio: auto !important;
 
     overflow: hidden;
+
+    display: block;
 
     background:
       radial-gradient(circle at 50% 30%,
@@ -3497,6 +3469,42 @@ body {
   }
 
 
+  /* =======================================================
+     MOBILE IMAGE
+     FULL IMAGE — NEVER CROPPED
+     ======================================================= */
+
+  .mentor-img-m {
+    position: relative;
+
+    inset: auto;
+
+    display: block;
+
+    width: 100% !important;
+
+    height: auto !important;
+
+    max-width: 100%;
+
+    max-height: none;
+
+    object-fit: contain !important;
+
+    object-position: center center !important;
+
+    transform: none !important;
+
+    background: transparent;
+
+    z-index: 1;
+  }
+
+
+  /* =======================================================
+     MOBILE IMAGE GRADIENT
+     ======================================================= */
+
   .mentor-img-wrapper-m::after {
     content: "";
 
@@ -3504,29 +3512,26 @@ body {
 
     inset: 0;
 
-    background:
-      linear-gradient(to bottom,
-        transparent 55%,
-        rgba(3, 13, 10, 0.45) 75%,
-        rgba(3, 13, 10, 0.96) 100%);
-
     pointer-events: none;
 
     z-index: 2;
+
+    background:
+      linear-gradient(to bottom,
+        transparent 50%,
+        rgba(3, 13, 10, 0.25) 72%,
+        rgba(3, 13, 10, 0.92) 100%);
   }
 
 
-  .mentor-img-m {
-    position: absolute;
+  /* NO MOBILE ZOOM */
 
-    inset: 0;
+  .mentor-img-wrapper-m:hover .mentor-img-m {
+    object-fit: contain !important;
 
-    width: 100%;
-    height: 100%;
+    object-position: center center !important;
 
-    object-fit: cover;
-
-    object-position: center top;
+    transform: none !important;
   }
 
 
@@ -3540,7 +3545,6 @@ body {
     padding: 1.8rem 1.35rem 1.5rem;
   }
 
-
   .mentor-info-m h3 {
     margin: 0 0 0.35rem;
 
@@ -3552,7 +3556,6 @@ body {
 
     line-height: 1.1;
   }
-
 
   .mentor-role-m {
     display: inline-flex;
@@ -3575,6 +3578,8 @@ body {
 
     width: 6px;
     height: 6px;
+
+    flex: 0 0 6px;
 
     border-radius: 50%;
 
@@ -3608,16 +3613,21 @@ body {
 
   .mentor-features-m {
     display: flex;
+
     flex-direction: column;
+
     gap: 0;
+
     padding: 0;
+
     overflow: hidden;
+
     border-radius: 15px;
 
     background: rgba(4, 15, 12, 0.6);
+
     border: 1px solid rgba(77, 243, 156, 0.1);
 
-    /* Center text */
     text-align: center;
   }
 
@@ -3630,18 +3640,13 @@ body {
 
     padding: 1rem;
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.045);
+    border-bottom:
+      1px solid rgba(255, 255, 255, 0.045);
   }
-
 
   .m-feature-row:last-child {
     border-bottom: none;
   }
-
-
-  /* =======================================================
-     MOBILE FEATURE ICON
-     ======================================================= */
 
   .m-feature-icon {
     width: 34px;
@@ -3663,11 +3668,6 @@ body {
     border: 1px solid rgba(77, 243, 156, 0.15);
   }
 
-
-  /* =======================================================
-     MOBILE FEATURE TEXT
-     ======================================================= */
-
   .m-feature-text {
     min-width: 0;
   }
@@ -3681,7 +3681,6 @@ body {
 
     line-height: 1.35;
   }
-
 }
 
 
@@ -3696,7 +3695,18 @@ body {
   }
 
   .mentor-img-wrapper-m {
-    aspect-ratio: 1 / 1.12;
+    aspect-ratio: auto !important;
+    height: auto !important;
+  }
+
+  .mentor-img-m {
+    width: 100% !important;
+    height: auto !important;
+
+    object-fit: contain !important;
+    object-position: center center !important;
+
+    transform: none !important;
   }
 
   .mentor-info-m {
@@ -3709,7 +3719,6 @@ body {
 
   .mentor-bio-m {
     font-size: 0.9rem;
-
     line-height: 1.6;
   }
 
@@ -3720,15 +3729,29 @@ body {
   .m-feature-row {
     padding: 0.85rem;
   }
-
 }
 
 
 /* =========================================================
-   VERY SMALL DEVICES
+   VERY SMALL MOBILE
    ========================================================= */
 
 @media (max-width: 360px) {
+
+  .mentor-img-wrapper-m {
+    aspect-ratio: auto !important;
+    height: auto !important;
+  }
+
+  .mentor-img-m {
+    width: 100% !important;
+    height: auto !important;
+
+    object-fit: contain !important;
+    object-position: center center !important;
+
+    transform: none !important;
+  }
 
   .mentor-info-m {
     padding: 1.3rem 1rem;
@@ -3760,7 +3783,67 @@ body {
   .m-feature-text strong {
     font-size: 0.82rem;
   }
+}
 
+
+/* =========================================================
+   ULTRA SMALL
+   ========================================================= */
+
+@media (max-width: 300px) {
+
+  .mentor-card-m {
+    border-radius: 15px;
+  }
+
+  .mentor-img-wrapper-m {
+    width: 100%;
+
+    aspect-ratio: auto !important;
+    height: auto !important;
+  }
+
+  .mentor-img-m {
+    width: 100% !important;
+    height: auto !important;
+
+    object-fit: contain !important;
+    object-position: center center !important;
+
+    transform: none !important;
+  }
+
+  .mentor-info-m {
+    padding: 1.1rem 0.8rem;
+  }
+
+  .mentor-info-m h3 {
+    font-size: 1.25rem;
+  }
+
+  .mentor-role-m {
+    font-size: 0.76rem;
+  }
+
+  .mentor-bio-m {
+    font-size: 0.8rem;
+  }
+}
+
+
+/* =========================================================
+   FINAL MENTOR IMAGE SAFETY LOCK
+   ========================================================= */
+
+.mentor-card-image>.mentor-img,
+.mentor-img-wrapper-m>.mentor-img-m {
+  object-fit: contain !important;
+
+  object-position: center center !important;
+
+  transform: none !important;
+
+  max-width: 100%;
 }
 
 
@@ -3771,19 +3854,21 @@ body {
 @media (prefers-reduced-motion: reduce) {
 
   .mentor-img,
+  .mentor-img-m,
   .m-stat-card {
     transition: none;
   }
 
-  .mentor-card-image:hover .mentor-img {
-    transform: none;
+  .mentor-card-image:hover .mentor-img,
+  .mentor-img-wrapper-m:hover .mentor-img-m {
+    transform: none !important;
   }
 
   .m-stat-card:hover {
     transform: none;
   }
-
 }
+
 
 /* =========================================================
    BONUS / KEY TAKEAWAY SECTION
@@ -4588,7 +4673,7 @@ body {
   padding: 1rem 1.5rem 1rem 0;
   /* Added right padding equal to gap for seamless loop */
   width: max-content;
-  animation: scroll-marquee 52s linear infinite;
+  animation: scroll-marquee 86.67s linear infinite;
 }
 
 .testimonial-cards-wrapper:hover {
@@ -4700,7 +4785,7 @@ body {
 .marquee-content {
   display: flex;
   width: max-content;
-  animation: scroll-marquee 52s linear infinite;
+  animation: scroll-marquee 86.67s linear infinite;
   align-items: center;
 }
 
@@ -4757,7 +4842,7 @@ body {
   .testimonial-cards-wrapper {
     width: max-content;
     padding: 1rem;
-    animation-duration: 18s;
+    animation-duration: 30s;
   }
 
   .testimonial-card {
@@ -6006,7 +6091,7 @@ body {
 /* ================== Footer Section ================== */
 .site-footer {
   background-color: rgba(4, 12, 10, 0.75);
-  padding: 4rem 0;
+  padding: 64px 0 48px;
   /* Increased bottom padding to clear sticky footer */
   border-top: 1px solid rgba(77, 243, 156, 0.1);
   margin-top: 0;
@@ -7262,8 +7347,8 @@ main>section:nth-of-type(even) {
 /* ================== FOOTER ================== */
 
 .site-footer {
-  padding: 1.2rem 0 !important;
-  /* 70% reduction from 4rem */
+  padding: 64px 0 48px !important;
+  /* 64px top, 48px bottom */
   margin-top: 0;
 }
 
@@ -7272,7 +7357,7 @@ main>section:nth-of-type(even) {
   .site-footer {
     padding-top: 1.2rem !important;
     padding-bottom: 86px !important;
-    /* 70% reduction from 120px */
+    /* 64px top, 48px bottom */
   }
 }
 
