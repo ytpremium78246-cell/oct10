@@ -5942,11 +5942,30 @@ body {
 }
 
 .access-pass {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: fit-content;
+  margin: 0 auto;
+
   color: var(--color-primary);
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
+
+  padding: 9px 22px;
+  min-height: 38px;
+
+  border: 1px solid rgba(77, 243, 156, 0.45);
+  border-radius: 999px;
+
+  background: rgba(5, 25, 20, 0.7);
+
+  box-shadow:
+    0 0 10px rgba(77, 243, 156, 0.08),
+    inset 0 0 10px rgba(77, 243, 156, 0.03);
 }
 
 .limited-seats-pill {
