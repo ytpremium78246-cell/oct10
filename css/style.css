@@ -2853,27 +2853,42 @@ body {
 
 .mentor-section::before {
   content: "";
+
   position: absolute;
+
   width: 420px;
   height: 420px;
+
   left: -220px;
   top: 20%;
+
   border-radius: 50%;
+
   background: rgba(77, 243, 156, 0.07);
+
   filter: blur(100px);
+
   pointer-events: none;
 }
 
+
 .mentor-section::after {
   content: "";
+
   position: absolute;
+
   width: 360px;
   height: 360px;
+
   right: -180px;
   bottom: 0;
+
   border-radius: 50%;
+
   background: rgba(43, 212, 128, 0.055);
+
   filter: blur(100px);
+
   pointer-events: none;
 }
 
@@ -2888,7 +2903,9 @@ body {
 
 .mentor-desktop {
   position: relative;
+
   z-index: 2;
+
   display: flex;
   flex-direction: column;
 }
@@ -2916,9 +2933,11 @@ body {
 
 .mentor-image-col {
   position: relative;
+
   min-width: 0;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 }
@@ -2926,19 +2945,24 @@ body {
 
 /* =========================================================
    DESKTOP IMAGE CARD
+   EXACT OUTER HEIGHT = 410px
    ========================================================= */
 
 .mentor-card-image {
   position: relative;
 
   width: 100%;
-  min-height: 540px;
+  height: 410px;
+  min-height: 405px;
 
   display: flex;
-  align-items: center;
+
+  align-items: stretch;
   justify-content: center;
 
   overflow: hidden;
+
+  box-sizing: border-box;
 
   border-radius: 24px;
 
@@ -2959,18 +2983,28 @@ body {
 
 /* =========================================================
    DESKTOP IMAGE
-   IMPORTANT: CONTAIN = NEVER CROPPED
+   EXACTLY FILLS OUTER BOX
+   NEVER CROPPED
    ========================================================= */
 
 .mentor-img {
-  position: relative;
+  position: absolute;
+
+  top: 0;
+  left: 0;
 
   width: 100%;
-  height: auto;
+  height: 100%;
 
-  min-height: 540px;
+  min-height: 0 !important;
+  max-height: none;
 
   display: block;
+
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
 
   object-fit: contain !important;
   object-position: center center !important;
@@ -2991,8 +3025,10 @@ body {
 
 .mentor-card-image:hover .mentor-img {
   transform: none !important;
+
   object-fit: contain !important;
   object-position: center center !important;
+
   filter: saturate(1.05);
 }
 
@@ -3005,9 +3041,11 @@ body {
   content: "";
 
   position: absolute;
+
   inset: 0;
 
   z-index: 2;
+
   pointer-events: none;
 
   background:
@@ -3041,6 +3079,7 @@ body {
   filter: blur(70px);
 
   z-index: 2;
+
   pointer-events: none;
 }
 
@@ -3108,6 +3147,7 @@ body {
   letter-spacing: 0.01em;
 }
 
+
 .mentor-role::before {
   content: "";
 
@@ -3166,6 +3206,7 @@ body {
   overflow: hidden;
 }
 
+
 .mentor-bio-box::after {
   content: "";
 
@@ -3186,8 +3227,10 @@ body {
   pointer-events: none;
 }
 
+
 .mentor-bio {
   position: relative;
+
   z-index: 2;
 
   margin: 0;
@@ -3214,6 +3257,7 @@ body {
 
   gap: 1rem;
 }
+
 
 .m-stat-card {
   position: relative;
@@ -3249,6 +3293,7 @@ body {
     background 0.3s ease;
 }
 
+
 .m-stat-card::before {
   content: "";
 
@@ -3271,6 +3316,7 @@ body {
   transition: opacity 0.3s ease;
 }
 
+
 .m-stat-card:hover {
   transform: translateY(-3px);
 
@@ -3286,9 +3332,11 @@ body {
     0 0 24px rgba(77, 243, 156, 0.06);
 }
 
+
 .m-stat-card:hover::before {
   opacity: 1;
 }
+
 
 .m-stat-icon {
   position: relative;
@@ -3318,9 +3366,11 @@ body {
     inset 0 0 12px rgba(77, 243, 156, 0.04);
 }
 
+
 .m-stat-details {
   min-width: 0;
 }
+
 
 .m-stat-details h4 {
   margin: 0 0 0.3rem;
@@ -3335,6 +3385,7 @@ body {
 
   letter-spacing: -0.01em;
 }
+
 
 .m-stat-details p {
   margin: 0;
@@ -3360,30 +3411,43 @@ body {
     gap: 2rem;
   }
 
+
   .mentor-card-image {
-    min-height: 500px;
+    width: 100%;
+
+    height: 410px;
+    min-height: 405px;
   }
 
+
   .mentor-img {
-    min-height: 500px;
+    width: 100%;
+    height: 100%;
+
+    min-height: 0 !important;
 
     object-fit: contain !important;
     object-position: center center !important;
   }
 
+
   .mentor-bio-box {
     padding: 1.6rem 1.7rem;
   }
+
 
   .m-stat-card {
     padding: 1rem;
   }
 
+
   .m-stat-icon {
     width: 44px;
     height: 44px;
+
     flex-basis: 44px;
   }
+
 
   .m-stat-details h4 {
     font-size: 1.05rem;
@@ -3401,9 +3465,11 @@ body {
     padding: 40px 0;
   }
 
+
   .mentor-desktop {
     display: none;
   }
+
 
   .mentor-mobile {
     position: relative;
@@ -3444,9 +3510,7 @@ body {
   /* =======================================================
      MOBILE IMAGE WRAPPER
 
-     IMPORTANT:
-     No forced aspect-ratio.
-     Border follows the real image height.
+     NO FORCED HEIGHT
      ======================================================= */
 
   .mentor-img-wrapper-m {
@@ -3489,6 +3553,9 @@ body {
 
     max-height: none;
 
+    margin: 0;
+    padding: 0;
+
     object-fit: contain !important;
 
     object-position: center center !important;
@@ -3524,7 +3591,9 @@ body {
   }
 
 
-  /* NO MOBILE ZOOM */
+  /* =======================================================
+     NO MOBILE ZOOM
+     ======================================================= */
 
   .mentor-img-wrapper-m:hover .mentor-img-m {
     object-fit: contain !important;
@@ -3545,6 +3614,7 @@ body {
     padding: 1.8rem 1.35rem 1.5rem;
   }
 
+
   .mentor-info-m h3 {
     margin: 0 0 0.35rem;
 
@@ -3556,6 +3626,7 @@ body {
 
     line-height: 1.1;
   }
+
 
   .mentor-role-m {
     display: inline-flex;
@@ -3572,6 +3643,7 @@ body {
 
     font-weight: 700;
   }
+
 
   .mentor-role-m::before {
     content: "";
@@ -3631,6 +3703,7 @@ body {
     text-align: center;
   }
 
+
   .m-feature-row {
     display: flex;
 
@@ -3644,9 +3717,11 @@ body {
       1px solid rgba(255, 255, 255, 0.045);
   }
 
+
   .m-feature-row:last-child {
     border-bottom: none;
   }
+
 
   .m-feature-icon {
     width: 34px;
@@ -3668,9 +3743,11 @@ body {
     border: 1px solid rgba(77, 243, 156, 0.15);
   }
 
+
   .m-feature-text {
     min-width: 0;
   }
+
 
   .m-feature-text strong {
     color: #ffffff;
@@ -3694,37 +3771,50 @@ body {
     border-radius: 19px;
   }
 
+
   .mentor-img-wrapper-m {
     aspect-ratio: auto !important;
+
     height: auto !important;
   }
 
+
   .mentor-img-m {
     width: 100% !important;
+
     height: auto !important;
 
+    min-height: 0 !important;
+
     object-fit: contain !important;
+
     object-position: center center !important;
 
     transform: none !important;
   }
 
+
   .mentor-info-m {
     padding: 1.5rem 1.15rem 1.25rem;
   }
+
 
   .mentor-info-m h3 {
     font-size: 1.55rem;
   }
 
+
   .mentor-bio-m {
     font-size: 0.9rem;
+
     line-height: 1.6;
   }
+
 
   .mentor-features-m {
     border-radius: 13px;
   }
+
 
   .m-feature-row {
     padding: 0.85rem;
@@ -3740,38 +3830,50 @@ body {
 
   .mentor-img-wrapper-m {
     aspect-ratio: auto !important;
+
     height: auto !important;
   }
 
+
   .mentor-img-m {
     width: 100% !important;
+
     height: auto !important;
 
+    min-height: 0 !important;
+
     object-fit: contain !important;
+
     object-position: center center !important;
 
     transform: none !important;
   }
 
+
   .mentor-info-m {
     padding: 1.3rem 1rem;
   }
+
 
   .mentor-info-m h3 {
     font-size: 1.4rem;
   }
 
+
   .mentor-role-m {
     font-size: 0.82rem;
   }
+
 
   .mentor-bio-m {
     font-size: 0.86rem;
   }
 
+
   .m-feature-row {
     gap: 0.7rem;
   }
+
 
   .m-feature-icon {
     width: 31px;
@@ -3779,6 +3881,7 @@ body {
 
     flex-basis: 31px;
   }
+
 
   .m-feature-text strong {
     font-size: 0.82rem;
@@ -3796,34 +3899,45 @@ body {
     border-radius: 15px;
   }
 
+
   .mentor-img-wrapper-m {
     width: 100%;
 
     aspect-ratio: auto !important;
+
     height: auto !important;
   }
 
+
   .mentor-img-m {
     width: 100% !important;
+
     height: auto !important;
 
+    min-height: 0 !important;
+
     object-fit: contain !important;
+
     object-position: center center !important;
 
     transform: none !important;
   }
 
+
   .mentor-info-m {
     padding: 1.1rem 0.8rem;
   }
+
 
   .mentor-info-m h3 {
     font-size: 1.25rem;
   }
 
+
   .mentor-role-m {
     font-size: 0.76rem;
   }
+
 
   .mentor-bio-m {
     font-size: 0.8rem;
@@ -3848,6 +3962,43 @@ body {
 
 
 /* =========================================================
+   DESKTOP HEIGHT SAFETY LOCK
+   PREVENTS OLD 540px / 420px RULES FROM RETURNING
+   ========================================================= */
+
+@media (min-width: 901px) {
+
+  .mentor-card-image {
+    height: 410px !important;
+
+    min-height: 405px !important;
+
+    max-height: 410px !important;
+  }
+
+
+  .mentor-card-image>.mentor-img {
+    top: 0 !important;
+    left: 0 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    min-height: 0 !important;
+
+    max-height: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    object-fit: contain !important;
+
+    object-position: center center !important;
+  }
+}
+
+
+/* =========================================================
    REDUCED MOTION
    ========================================================= */
 
@@ -3859,16 +4010,17 @@ body {
     transition: none;
   }
 
+
   .mentor-card-image:hover .mentor-img,
   .mentor-img-wrapper-m:hover .mentor-img-m {
     transform: none !important;
   }
 
+
   .m-stat-card:hover {
     transform: none;
   }
 }
-
 
 /* =========================================================
    BONUS / KEY TAKEAWAY SECTION
